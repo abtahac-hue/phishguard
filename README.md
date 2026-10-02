@@ -7,6 +7,10 @@ PhishGuard checks messages and URLs for common phishing warning signs and explai
 
 I built this as a cybersecurity student at FIU to practice identifying phishing indicators and turn those checks into a working web app. I wanted the results to explain the warning signs rather than just display a score.
 
+🌐 **[Try the live demo](https://phishguard-abtaha-2026.onrender.com/)**
+
+The demo uses Render’s free hosting, so it may take about a minute to wake up after inactivity.
+
 ![PhishGuard analyzing a sample phishing message](docs/phishguard-demo.png)
 
 
@@ -125,14 +129,14 @@ PhishGuard is an educational prototype. It can miss phishing attempts and flag l
 
 ## Project status
 
-The app currently runs locally. A public demo has not been deployed.
+PhishGuard is deployed on Render using Docker. FastAPI serves both the built React website and the analysis API.
 
-The Vite proxy works during development; a production deployment also needs a hosted Python API and routing configured to reach it.
+The project includes eleven passing backend tests, with frontend lint and build checks also passing.
 
 
 ## Author
 
-Built by **Abtaha Chowdhury**, a cybersecurity student at Florida International University.
+Built by **Abtaha Chowdhury**, a CyS student @Florida International University.
 
 ## License
 
