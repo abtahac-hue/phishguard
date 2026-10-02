@@ -2,6 +2,8 @@ import re
 
 from fastapi import FastAPI
 from pydantic import BaseModel, Field, field_validator
+from url_checks import analyze_urls
+
 
 app = FastAPI(
     title="PhishGuard API",
@@ -84,6 +86,9 @@ def analyze_message(request: AnalysisRequest):
                 "explanation": rule["explanation"],
             })
 
+    url_findings = analyze_urls(request.text)
+    findings.extend(url_findings)
+    score += sum(finding["points"] for finding in url_findings)
     score = min(score, 100)
 
     if score >= 60:
@@ -100,6 +105,7 @@ def analyze_message(request: AnalysisRequest):
         "notice": (
             "This is a rule-based warning score, not a probability of phishing. "
             "A low score does not guarantee safety. Context and negation "
-            "can affect results. URL analysis is not implemented yet."
+            "can affect results. Links are inspected as text only; "
+            "destinations are not visited or checked against threat databases."
         ),
     }
