@@ -1,0 +1,160 @@
+#root {
+  width: 100%;
+}
+
+.app {
+  width: min(880px, 100%);
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+header {
+  margin-bottom: 36px;
+}
+
+header > p:first-child {
+  color: #5eead4;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+h1 {
+  margin: 12px 0;
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+p {
+  line-height: 1.65;
+}
+
+header > p:last-child {
+  max-width: 600px;
+  color: #aebed2;
+}
+
+form,
+section:not(:empty) {
+  padding: 28px;
+  border: 1px solid #2b3b52;
+  border-radius: 20px;
+  background: #121e30;
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #52657e;
+  border-radius: 12px;
+  background: #0b1220;
+  color: #e8eef6;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+textarea::placeholder {
+  color: #98a9bf;
+}
+
+form > p {
+  color: #aebed2;
+  font-size: 0.85rem;
+}
+
+button {
+  padding: 13px 22px;
+  border: 0;
+  border-radius: 10px;
+  background: #5eead4;
+  color: #08251f;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #99f6e4;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+section:not(:empty) {
+  margin-top: 24px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+section strong {
+  color: #5eead4;
+  font-size: 2rem;
+}
+
+ul {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  padding: 18px;
+  border: 1px solid #33465f;
+  border-radius: 12px;
+  background: #0b1626;
+  overflow-wrap: anywhere;
+}
+
+h3 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+li p {
+  margin: 10px 0;
+  color: #c3cfdf;
+}
+
+small {
+  color: #5eead4;
+  font-weight: 700;
+}
+
+section > p:last-child {
+  color: #aebed2;
+}
+
+[role="alert"] {
+  padding: 16px;
+  border: 1px solid #fda4af;
+  border-radius: 10px;
+  color: #fecdd3;
+  background: #351923;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 36px 16px;
+  }
+
+  form,
+  section:not(:empty) {
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
