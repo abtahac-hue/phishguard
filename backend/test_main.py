@@ -94,3 +94,22 @@ def test_https_alone_has_no_url_findings():
 
     assert response.json()["score"] == 0
     assert response.json()["findings"] == []    
+
+def test_api_analyze_route():
+    response = client.post("/api/analyze", json={
+        "text": (
+            "Urgent! Your account will be suspended. "
+            "Verify your password at http://192.0.2.1/login"
+        )
+    })
+
+    assert response.status_code == 200
+    assert response.json()["score"] == 85
+    assert response.json()["risk_level"] == "High"
+
+
+def test_api_health_route():
+    response = client.get("/api/health")
+
+    assert response.status_code == 200
+    assert response.json()["status"] == "ok"

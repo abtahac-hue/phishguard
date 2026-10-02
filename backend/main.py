@@ -3,7 +3,8 @@ import re
 from fastapi import FastAPI
 from pydantic import BaseModel, Field, field_validator
 from url_checks import analyze_urls
-
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(
     title="PhishGuard API",
@@ -64,12 +65,12 @@ RULES = [
     },
 ]
 
-
+@app.get("/api/health")
 @app.get("/health")
 def health_check():
     return {"status": "ok", "service": "PhishGuard API"}
 
-
+@app.post("/api/analyze")
 @app.post("/analyze")
 def analyze_message(request: AnalysisRequest):
     findings = []
@@ -109,3 +110,14 @@ def analyze_message(request: AnalysisRequest):
             "destinations are not visited or checked against threat databases."
         ),
     }
+   
+FRONTEND_DIST = (
+    Path(__file__).resolve().parent.parent / "frontend" / "dist"
+)
+
+if FRONTEND_DIST.is_dir():
+    app.mount(
+        "/",
+        StaticFiles(directory=str(FRONTEND_DIST), html=True),
+        name="frontend",
+    )
